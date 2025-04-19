@@ -4,15 +4,17 @@ Uma pequena máquina virtual com arquitetura baseada em MIPS, desenvolvida para 
 
 📁 Estrutura do Projeto
 
+```
 vm/
-├── main.c # Orquestrador principal
-├── loader.cpp # Carrega programas e popula a memória
-├── launch.c # Executa as instruções da VM (core da CPU)
-├── drop_down_menu.c # Interface TUI para escolha de arquivos
-├── dir_options.c # Lê opções de diretório para o menu
-├── instructions.h # Define os opcodes e estrutura das instruções
-├── launch.h # Interface da função launch_program
-└── programs/ # Programas escritos para rodar na VM
+├── main.c               # Orquestrador principal
+├── loader.cpp           # Carrega programas e popula a memória
+├── launch.c             # Executa as instruções da VM (core da CPU)
+├── drop_down_menu.c     # Interface TUI para escolha de arquivos
+├── dir_options.c        # Lê opções de diretório para o menu
+├── instructions.h       # Define os opcodes e estrutura das instruções
+├── launch.h             # Interface da função launch_program
+└── programs/            # Programas escritos para rodar na VM
+```
 
 🚀 Como funciona
 
