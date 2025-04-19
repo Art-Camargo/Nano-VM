@@ -83,6 +83,10 @@ void launch_program(int data_memory[MEMORY_SIZE], Instruction memory[MEMORY_SIZE
         case STP:
             return;
 
+        case SET:
+            data_memory[instruction.op1] = instruction.op2;
+            break;
+
         default:
             continue;
     }

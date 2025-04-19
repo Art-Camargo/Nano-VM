@@ -27,6 +27,7 @@ static const Instruction NOP_INSTRUCTION = { -1, -1, -1, -1 };
 #define W 10
 #define R 11
 #define STP 12
+#define SET 13
 
 
 #endif
