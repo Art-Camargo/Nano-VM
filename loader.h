@@ -13,6 +13,6 @@ FILE *read_file(char *filename);
  * @param mem Memória de instruções (Instruction[]).
  * @param data_mem Memória de dados (int[]), caso queira inicializar algo junto.
  */
-void load_program(char *filename, Instruction mem[MEMORY_SIZE], int data_mem[MEMORY_SIZE]);
+void load_program(char *filename, Instruction mem[MEMORY_SIZE]);
 
 #endif

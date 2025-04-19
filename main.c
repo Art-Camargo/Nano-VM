@@ -45,6 +45,23 @@ void choose_file(char *program) {
     free_dropdown(dropdown);
 }
 
+void print_memory() {
+    printf("Memory contents:\n");
+    for (int i = 0; i < MEMORY_SIZE; i++) {
+        if (memory[i].opcode != -1) {
+            printf("Address %d: Opcode %d, Op1 %d, Op2 %d, Op3 %d\n", i, memory[i].opcode, memory[i].op1, memory[i].op2, memory[i].op3);
+        }
+    }
+}
+
+void print_data_memory() {
+    printf("Data memory contents:\n");
+    for (int i = 0; i < MEMORY_SIZE; i++) {
+        if (data_memory[i] != 0) {
+            printf("Address %d: Value %d\n", i, data_memory[i]);
+        }
+    }
+}
 
 int main() {
   char program[MAX_FILENAME];
@@ -52,8 +69,9 @@ int main() {
   choose_file(program);
   snprintf(full_path, sizeof(full_path), "%s/%s", PROGRAMS_DIR, program);
   init_memory();
-  load_program(full_path, memory, data_memory);
+  load_program(full_path, memory);
   launch_program(data_memory, memory);
-  printf("Program finished execution.\n");
+  print_memory();
+  print_data_memory();
   return 0;
 }

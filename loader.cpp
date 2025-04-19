@@ -18,7 +18,7 @@ FILE *read_file(char *filename) {
 
 
 
-void load_program(char *filename, Instruction mem[MEMORY_SIZE], int data_mem[MEMORY_SIZE]) {
+void load_program(char *filename, Instruction mem[MEMORY_SIZE]) {
   FILE *file = read_file(filename);
   char buffer[256];
   int instruction_count = 0;
