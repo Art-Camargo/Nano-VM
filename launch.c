@@ -1,6 +1,7 @@
 #include "instructions.h"
 #include <stdio.h>
 #include <stdlib.h>
+#include <unistd.h>
 
 void alu(int opcode, int *registers[4], int op1, int op2, int op3) {
   switch (opcode) {
@@ -42,10 +43,21 @@ int handle_jump(int opcode, int *regs[], Instruction instr, int current_pc) {
   }
 }
 
+void print_registers_sleeping(int a0, int a1, int a2, int a3) {
+  printf("\n\nRegisters:\n");
+  printf("a0: %d\n", a0);
+  printf("a1: %d\n", a1);
+  printf("a2: %d\n", a2);
+  printf("a3: %d\n", a3);
+  printf("Sleeping...\n\n");
+  sleep(1);
+}
+
 void launch_program(int data_memory[MEMORY_SIZE], Instruction memory[MEMORY_SIZE]) {
   int pc = 0, a0 = 0, a1 = 0, a2 = 0, a3 = 0;
   int *registers[4] = { &a0, &a1, &a2, &a3 };
   
+
 
   while (pc < MEMORY_SIZE) {
     Instruction instruction = memory[pc++];
@@ -90,6 +102,7 @@ void launch_program(int data_memory[MEMORY_SIZE], Instruction memory[MEMORY_SIZE
         default:
             continue;
     }
+    print_registers_sleeping(a0, a1, a2, a3);
   }
   
 }
