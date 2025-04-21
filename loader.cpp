@@ -29,7 +29,7 @@ void load_program(char *filename, Instruction mem[MEMORY_SIZE]) {
     Instruction instruction;
     int opcode, op1, op2, op3;
     sscanf(line.c_str(), "%d %d %d %d", &opcode, &op1, &op2, &op3);
-    if (opcode < 0 || opcode > 13) continue;
+    if (opcode < 0 || opcode > 14) continue;
     instruction.opcode = opcode;
     instruction.op1 = op1;
     instruction.op2 = op2;

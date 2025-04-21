@@ -38,13 +38,15 @@ int handle_jump(int opcode, int *regs[], Instruction instr, int current_pc) {
           return (*regs[instr.op1] > *regs[instr.op2]) ? instr.op3 : current_pc;
       case JLT:
           return (*regs[instr.op1] < *regs[instr.op2]) ? instr.op3 : current_pc;
+      case JNEQ:
+          return (*regs[instr.op1] != *regs[instr.op2]) ? instr.op3 : current_pc;
       default:
           return current_pc;
   }
 }
 
 void print_registers_sleeping(int a0, int a1, int a2, int a3) {
-  printf("\n\nRegisters:\n");
+  printf("Registers:\n");
   printf("a0: %d\n", a0);
   printf("a1: %d\n", a1);
   printf("a2: %d\n", a2);
@@ -81,6 +83,7 @@ void launch_program(int data_memory[MEMORY_SIZE], Instruction memory[MEMORY_SIZE
         case JEQ:
         case JGT:
         case JLT:
+        case JNEQ:
             pc = handle_jump(instruction.opcode, registers, instruction, pc);
             break;
 
@@ -93,7 +96,8 @@ void launch_program(int data_memory[MEMORY_SIZE], Instruction memory[MEMORY_SIZE
             break;
 
         case STP:
-            return;
+            pc = MEMORY_SIZE; 
+            break;
 
         case SET:
             data_memory[instruction.op1] = instruction.op2;
@@ -102,7 +106,15 @@ void launch_program(int data_memory[MEMORY_SIZE], Instruction memory[MEMORY_SIZE
         default:
             continue;
     }
+    printf("\n\nTo Executando: %d\n", instruction.opcode);
     print_registers_sleeping(a0, a1, a2, a3);
   }
+
+    printf("Program finished.\n");
+    printf("Final registers:\n");
+    printf("a0: %d\n", a0);
+    printf("a1: %d\n", a1);
+    printf("a2: %d\n", a2);
+    printf("a3: %d\n", a3);
   
 }
