@@ -92,6 +92,7 @@ void launch_program(int data_memory[MEMORY_SIZE], Instruction memory[MEMORY_SIZE
             break;
 
         case R:
+            printf("Digite um valor para a memória %d: ", instruction.op1);
             scanf("%d", &data_memory[instruction.op1]);
             break;
 
