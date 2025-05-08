@@ -64,11 +64,13 @@ void print_data_memory() {
     }
 }
 
-int main() {
-  char program[MAX_FILENAME];
+int main(int argc, char *argv[]) {
   char full_path[MAX_DIR_SIZE];
-  choose_file(program);
-  snprintf(full_path, sizeof(full_path), "%s/%s", PROGRAMS_DIR, program);
+  if (argc < 2) {
+    fprintf(stderr, "Uso: %s <nome_do_arquivo>\n", argv[0]);
+    return 1;
+  }
+  snprintf(full_path, sizeof(full_path), "%s/%s", PROGRAMS_DIR, argv[1]);
   init_memory();
   load_program(full_path, memory);
   launch_program(data_memory, memory);
@@ -76,3 +78,5 @@ int main() {
   print_data_memory();
   return 0;
 }
+
+

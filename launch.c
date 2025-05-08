@@ -108,6 +108,7 @@ void launch_program(int data_memory[MEMORY_SIZE], Instruction memory[MEMORY_SIZE
             continue;
     }
     printf("\n\nTo Executando: %d\n", instruction.opcode);
+    printf("\n\npc: %d\n", pc);
     print_registers_sleeping(a0, a1, a2, a3);
   }
 
